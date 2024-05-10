@@ -41,7 +41,7 @@ class App{
         $rows = $this -> link -> query($query);
         $rows -> execute();
 
-        $singleRow = $rows -> fetcAll(PDO::FETCH_OBJ);
+        $singleRow = $rows -> fetch(PDO::FETCH_OBJ);
 
         if($singleRow){
             return $singleRow;
@@ -119,7 +119,7 @@ class App{
         $loginUser = $this ->link-> query($query);
         $loginUser -> execute();
 
-        $fetch = $loginUser -> fetch(PDO::FETCH_OBJ);
+        $fetch = $loginUser -> fetch(PDO::FETCH_ASSOC);
 
         if($loginUser -> rowCount() > 0){
             // Password 
