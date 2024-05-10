@@ -19,9 +19,9 @@ class App{
     public function connect(){
         $this -> link = new PDO("mysql:host=".$this->host.";dbname=".$this->dbname."",$this->user,$this->pass);
 
-        if($this -> link){
-            echo "Database Connection Working successfully.";
-        }
+        // if($this -> link){
+        //     echo "Database Connection Working successfully.";
+        // }
     }
     // Select All
     public function selectAll($query){
@@ -125,7 +125,7 @@ class App{
             // Password 
             if(password_verify($data['password'], $fetch['password'])){
                 // Start session vars
-                header("locatin: ".$path."");
+                header("location: ".$path."");
             }
         }
     }
