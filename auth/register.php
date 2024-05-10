@@ -1,10 +1,7 @@
-
-
 <?php
 require "../includes/header.php";
 require "../libs/App.php";
 require "../config/config.php";
-
 
 $app = new App;
 
