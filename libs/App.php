@@ -1,5 +1,5 @@
 <?php 
-require "../config/config.php";
+
 
 class App{
     public $host = HOST;
@@ -146,4 +146,3 @@ class App{
 
 }
 
-$obj = new App;
