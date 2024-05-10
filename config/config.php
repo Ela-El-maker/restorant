@@ -3,7 +3,4 @@
     define("DBNAME","restorant");
     define("USER","root");
     define("PASS", "");
-    
 
-
-?>
