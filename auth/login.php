@@ -1,8 +1,7 @@
-<?php
-    require "../config/config.php";
-    require "../includes/header.php";
-    require "../libs/App.php";
-
+<?php require "../config/config.php"; ?>
+<?php require "../libs/App.php"; ?>
+<?php require "../includes/header.php"; ?>
+<?php 
 
     $app = new App;
 
@@ -18,7 +17,7 @@
             "password" => $password,
         ];
     
-        $path = "APPURL";
+        $path = "http://localhost/restorant";
     
         $app->login($query, $data, $path);
     }
