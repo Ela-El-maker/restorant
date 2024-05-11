@@ -1,7 +1,13 @@
 <?php 
-    define("APPURL", "http://restoran.test")
-?>
-<!DOCTYPE html>
+
+    $app = new App;
+    $app->startingSession();
+
+    define("APPURL", "http://localhost/restorant");
+    define("APPIMAGES", "http://localhost/restorant/admin-panel/foods-admins/foods-images");
+
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -12,7 +18,7 @@
     <meta content="" name="description">
 
     <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+    <link href="<?php echo APPURL; ?>/img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,15 +30,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 
     <!-- Libraries Stylesheet -->
-    <link href="<?php echo APPURL?>/lib/animate/animate.min.css" rel="stylesheet">
-    <link href="<?php echo APPURL?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="<?php echo APPURL?>/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+    <link href="<?php echo APPURL; ?>/lib/animate/animate.min.css" rel="stylesheet">
+    <link href="<?php echo APPURL; ?>/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="<?php echo APPURL; ?>/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
 
     <!-- Customized Bootstrap Stylesheet -->
-    <link href="<?php echo APPURL?>/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo APPURL; ?>/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Template Stylesheet -->
-    <link href="<?php echo APPURL?>/css/style.css" rel="stylesheet">
+    <link href="<?php echo APPURL; ?>/css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -49,7 +55,7 @@
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
-                <a href="" class="navbar-brand p-0">
+                <a href="<?php echo APPURL;?>" class="navbar-brand p-0">
                     <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>Restoran</h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
@@ -58,16 +64,29 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="index.html" class="nav-item nav-link active">Home</a>
-                        <a href="about.html" class="nav-item nav-link">About</a>
-                        <a href="service.html" class="nav-item nav-link">Service</a>
-                        <a href="menu.html" class="nav-item nav-link">Menu</a>
-                        <a href="cart.html" class="nav-item nav-link"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
+                        <a href="<?php echo APPURL;?>" class="nav-item nav-link active">Home</a>
+                        <a href="<?php echo APPURL;?>/about.php" class="nav-item nav-link">About</a>
+                        <a href="<?php echo APPURL;?>/service.php" class="nav-item nav-link">Service</a>
+                        <a href="<?php echo APPURL;?>/contact.php" class="nav-item nav-link">Contact</a>
+                        <?php if(isset($_SESSION['email'])) :?>
+                        <a href="<?php echo APPURL;?>/booking.php" class="nav-item nav-link">Booking</a>
 
-                      
-                        <a href="contact.html" class="nav-item nav-link">Contact</a>
-                        <a href="login.html" class="nav-item nav-link">Login</a>
-                        <a href="register.html" class="nav-item nav-link">Register</a>
+                        <a href="<?php echo APPURL;?>/food/cart.php" class="nav-item nav-link"><i class="fa-sharp fa-solid fa-cart-shopping"></i>Cart</a>
+                        <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                   <?php echo $_SESSION['email'];?>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="<?php echo APPURL;?>/users/bookings.php">Bookings</a></li>
+                                    <li><a class="dropdown-item" href="<?php echo APPURL;?>/users/orders.php">Orders</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" href="<?php echo APPURL;?>/auth/logout.php">Logout</a></li>
+                                </ul>
+                        </li>
+                        <?php else : ?>
+                        <a href="<?php echo APPURL;?>/auth/login.php" class="nav-item nav-link">Login</a>
+                        <a href="<?php echo APPURL;?>/auth/register.php" class="nav-item nav-link">Register</a>
+                        <?php endif;?>
                     </div>
                    
                 </div>
