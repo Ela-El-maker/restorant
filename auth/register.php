@@ -1,29 +1,39 @@
-<?php
-require "../includes/header.php";
-require "../libs/App.php";
-require "../config/config.php";
+<?php require "../config/config.php"; ?>
+<?php require "../libs/App.php"; ?>
+<?php require "../includes/header.php"; ?>
+<?php 
 
-$app = new App;
 
-if (isset($_POST['submit'])) {
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $app = new App;   
+    $app->validateSession();
 
-    $query = "INSERT INTO users (username,email,password) VALUES (:username,:email,:password)";
 
-    $arr = [
-        ":username" => $username,
-        ":email" => $email,
-        ":password" => $password,
-    ];
+    if(isset($_POST['submit'])) {
 
-    $path = "login.php";
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 
-    $app->register($query, $arr, $path);
-}
+
+        $query = "INSERT INTO users (username, email, password) VALUES (:username, 
+        :email, :password)";
+
+        $arr = [
+            ":username" =>  $username,
+            ":email" =>  $email,
+            ":password" =>  $password,
+        ];
+
+        $path = "login.php";
+
+        $app->register($query, $arr, $path);
+
+    }
+
+
 
 ?>
+
 
 <div class="container-xxl py-5 bg-dark hero-header mb-5">
     <div class="container text-center my-5 pt-5 pb-4">
