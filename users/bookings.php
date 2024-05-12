@@ -55,7 +55,7 @@
                                         <td><?php echo $booking->num_people; ?></td>
                                         <td><?php echo $booking->special_request; ?></td>
                                         <td><?php echo $booking->status; ?></td>
-                                        <?php if($booking->status == "Confirmed") : ?>
+                                        <?php if($booking->status == "confirmed") : ?>
                                             <td><a href="<?php echo APPURL; ?>/users/review.php" class="btn btn-success text-white">review us</td>
                                         <?php endif; ?>    
                                     </tr>
@@ -72,6 +72,11 @@
                 </div>
             </div>
         <!-- Service End -->
+
+
+
+
+        
 <?php require "../includes/footer.php";?>
 
 
