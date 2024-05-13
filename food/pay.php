@@ -1,7 +1,17 @@
 <?php require "../config/config.php"; ?>
 <?php require "../libs/App.php"; ?>
 <?php require "../includes/header.php"; ?>
+<?php 
 
+
+    if(!isset($_SERVER['HTTP_REFERER'])){
+        // redirect them to your desired location
+        echo "<script>window.location.href='".APPURL."'</script>";
+        exit;
+    }
+
+
+?>
 
     <div class="container-xxl py-5 bg-dark hero-header mb-5">
                 <div class="container text-center my-5 pt-5 pb-4">

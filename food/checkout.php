@@ -1,9 +1,21 @@
 <?php require "../config/config.php"; ?>
 <?php require "../libs/App.php"; ?>
 <?php require "../includes/header.php"; ?>
+<?php 
 
+
+    if(!isset($_SERVER['HTTP_REFERER'])){
+        // redirect them to your desired location
+        echo "<script>window.location.href='".APPURL."'</script>";
+        exit;
+    }
+
+
+?>
 
 <?php
+
+    $app = new App;
    
    if(isset($_POST['submit'])) {
 
