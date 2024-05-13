@@ -193,17 +193,17 @@
             }
         }
 
-        // public function validateSessionAdmin() {
-        //     if(isset($_SESSION['email'])) {
-        //         echo "<script>window.location.href='".ADMINURL."/index.php'</script>";
-        //     }
-        // }
+        public function validateSessionAdmin() {
+            if(isset($_SESSION['email'])) {
+                echo "<script>window.location.href='".ADMINURL."/index.php'</script>";
+            }
+        }
 
-        // public function validateSessionAdminInside() {
-        //     if(!isset($_SESSION['email'])) {
-        //         echo "<script>window.location.href='".ADMINURL."/admins/login-admins.php'</script>";
-        //     }
-        // }
+        public function validateSessionAdminInside() {
+            if(!isset($_SESSION['email'])) {
+                echo "<script>window.location.href='".ADMINURL."/admins/login-admins.php'</script>";
+            }
+        }
 
 
 
