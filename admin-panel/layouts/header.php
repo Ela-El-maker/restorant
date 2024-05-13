@@ -1,3 +1,13 @@
+<?php 
+
+  $app = new App;
+  $app->startingSession();
+
+  define("ADMINURL","http://localhost/restorant/admin-panel");
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +16,7 @@
     <title>Admin Panel</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
-     <link href="styles/style.css" rel="stylesheet">
+     <link href="<?php echo ADMINURL;?>/styles/style.css" rel="stylesheet">
     <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </head>
@@ -21,44 +31,51 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarText">
+        <?php if(isset($_SESSION['email'])) :?>
         <ul class="navbar-nav side-nav" >
           <li class="nav-item">
-            <a class="nav-link" style="margin-left: 20px;" href="index.html">Home
+            <a class="nav-link" style="margin-left: 20px;" href="<?php echo ADMINURL;?>/index.php">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="admins/admins.html" style="margin-left: 20px;">Admins</a>
+            <a class="nav-link" href="<?php echo ADMINURL;?>/admins/admins.php" style="margin-left: 20px;">Admins</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="orders-admins/show-orders.html" style="margin-left: 20px;">Orders</a>
+            <a class="nav-link" href="<?php echo ADMINURL;?>/orders-admins/show-orders.php" style="margin-left: 20px;">Orders</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="foods-admins/show-foods.html" style="margin-left: 20px;">Foods</a>
+            <a class="nav-link" href="<?php echo ADMINURL;?>/foods-admins/show-foods.php" style="margin-left: 20px;">Foods</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="bookings-admins/show-bookings.html" style="margin-left: 20px;">Bookings</a>
+            <a class="nav-link" href="<?php echo ADMINURL;?>/bookings-admins/show-bookings.php" style="margin-left: 20px;">Bookings</a>
           </li>
         </ul>
+
+        <?php endif;?>
+
         <ul class="navbar-nav ml-md-auto d-md-flex">
+          <?php if(!isset($_SESSION['email'])) :?>
+        <li class="nav-item">
+            <a class="nav-link" href="<?php echo ADMINURL;?>/admins/login-admins.php">login
+            </a>
+          </li>
+            <?php else : ?>
           <li class="nav-item">
             <a class="nav-link" href="index.html">Home
               <span class="sr-only">(current)</span>
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="admins/login-admins.html">login
-            </a>
-          </li>
+         
           <li class="nav-item dropdown">
             <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              username
+              <?php echo $_SESSION['email'];?>
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="#">Logout</a>
+              <a class="dropdown-item" href="<?php echo ADMINURL;?>/admins/logout.php">Logout</a>
               
           </li>
-                          
+           <?php endif;?>               
           
         </ul>
       </div>
